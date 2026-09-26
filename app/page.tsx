@@ -49,14 +49,17 @@ interface Svg {
 
 function FooterIcon({
   href,
+  label,
   icon,
 }: {
   href: string;
+  label: string;
   icon: ReactElement;
 }): ReactElement {
   return (
     <ExternalAnchor
       href={href}
+      aria-label={label}
       className="p-1 hover:text-teal-600 dark:hover:text-teal-400"
     >
       {icon}
@@ -543,7 +546,11 @@ export default function Hero(): ReactElement {
         </section>
         <footer className="my-8 space-y-2 w-full text-zinc-600 dark:text-zinc-400">
           <div className="text-md flex justify-center">
-            <FooterIcon href={ORG_GITHUB} icon={<FaGithub />} />
+            <FooterIcon
+              href={ORG_GITHUB}
+              label="Github"
+              icon={<FaGithub aria-hidden="true" />}
+            />
           </div>
           <div className="text-center text-sm">
             Hero photo by{" "}
