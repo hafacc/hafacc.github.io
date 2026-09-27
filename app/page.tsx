@@ -131,7 +131,7 @@ export default function Hero(): ReactElement {
               buttons={[
                 {
                   text: "Website",
-                  href: "https://hafa.cc/scenic-route/",
+                  href: "https://scenic.hafa.cc/",
                   icon: <FaGlobe />,
                 },
                 {
@@ -156,7 +156,7 @@ export default function Hero(): ReactElement {
               buttons={[
                 {
                   text: "Website",
-                  href: "https://hafa.cc/kip/",
+                  href: "https://kip.hafa.cc/",
                   icon: <FaGlobe />,
                 },
                 {
