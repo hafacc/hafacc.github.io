@@ -1,0 +1,44 @@
+name: automerge
+
+# Kept out of build.yml: a workflow reused as a gate can only narrow its caller's token, so
+# the write scopes below would break any release or deploy that calls it.
+on:
+  workflow_run:
+    workflows: [build]
+    types: [completed]
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  # nothing is checked out here, so gh has no remote to infer the repo from
+  GH_REPO: ${{ github.repository }}
+  BRANCH: ${{ github.event.workflow_run.head_branch }}
+
+jobs:
+  check:
+    if: github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.actor.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      workflows: ${{ steps.files.outputs.workflows }}
+    steps:
+      - id: files
+        run: |
+          if gh pr diff "$BRANCH" --name-only | grep -q '^\.github/workflows/'; then
+            echo "workflows=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "workflows=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  merge:
+    needs: check
+    # GITHUB_TOKEN can't merge changes to workflow files, so those are left to merge by hand.
+    if: needs.check.outputs.workflows == 'false'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - run: gh pr merge --squash --match-head-commit "$HEAD_SHA" "$BRANCH"
+        env:
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
