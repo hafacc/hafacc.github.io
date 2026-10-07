@@ -22,4 +22,4 @@ jobs:
       - if: inputs.upload-pages
         uses: actions/upload-pages-artifact@v5
         with:
-          path: ./dist
+          path: ./build
