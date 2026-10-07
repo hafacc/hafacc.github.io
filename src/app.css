@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* dark: follows the system preference, so the common "follow system" path never
-   flashes. A manual choice pins [data-theme] on <html> (set after hydration):
+   flashes. A manual choice pins [data-theme] on <html> (set once the script runs):
    an explicit dark always wins, an explicit light suppresses the media query.
    Only a manual override that disagrees with the system can flash on load. */
 @custom-variant dark {
@@ -17,11 +17,12 @@
 }
 
 @theme inline {
-  --font-cursive: var(--font-niconne), "ui-cursive", "cursive";
+  --font-cursive: "Niconne", ui-cursive, cursive;
 }
 
 html {
-  scroll-behavior: smooth;
+  /* keeps a focused card clear of the fixed header */
+  scroll-padding-top: 4rem;
   /* keep native surfaces (scrollbars, form controls, the pre-paint canvas) in
      sync with the theme, matching the dark: variant above */
   color-scheme: light dark;
@@ -35,16 +36,22 @@ html[data-theme="dark"] {
   color-scheme: dark;
 }
 
-/* hide or show if scrolled to the top; kept non-interactive while hidden so the
-   invisible header doesn't intercept clicks or steal tab focus over the hero */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* hide or show if scrolled to the top; the hidden header ignores the pointer so it
+   doesn't intercept clicks over the hero, but stays in the tab order and shows
+   itself once something inside it has focus */
 .scroll-show {
-  visibility: hidden;
   pointer-events: none;
 }
 
-html[data-scroll="true"] .scroll-show {
+html[data-scroll="true"] .scroll-show,
+.scroll-show:focus-within {
   opacity: 1;
-  visibility: visible;
   pointer-events: auto;
 }
 
