@@ -1,5 +1,18 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import FiblatLogo from "#lib/components/fiblat-logo.svelte";
+  import HafaLogo from "#lib/components/hafa-logo.svelte";
+  import HilbertLogo from "#lib/components/hilbert-logo.svelte";
+  import Project from "#lib/components/project.svelte";
+  import ThemeButton from "#lib/components/theme-button.svelte";
+  import asciiMath from "#lib/images/ascii-math.svg";
+  import colorSeparation from "#lib/images/color-separation.svg";
+  import splash from "#lib/images/irina-shishkina-FMlZAUFmkvw-unsplash.jpg";
+  import kip from "#lib/images/kip.svg";
+  import looseRat from "#lib/images/loose-rat.svg";
+  import remarkableLogo from "#lib/images/remarkable-logo.svg";
+  import repub from "#lib/images/repub.svg";
+  import scenicRoute from "#lib/images/scenic-route.svg";
   import FaChrome from "~icons/fa6-brands/chrome";
   import FaGithub from "~icons/fa6-brands/github";
   import FaNpm from "~icons/fa6-brands/npm";
@@ -10,19 +23,6 @@
   import SiPypi from "~icons/simple-icons/pypi";
   import TbBraces from "~icons/tabler/braces";
   import TbHierarchy3 from "~icons/tabler/hierarchy-3";
-  import FiblatLogo from "./components/fiblat-logo.svelte";
-  import HafaLogo from "./components/hafa-logo.svelte";
-  import HilbertLogo from "./components/hilbert-logo.svelte";
-  import Project from "./components/project.svelte";
-  import ThemeButton from "./components/theme-button.svelte";
-  import asciiMath from "./images/ascii-math.svg";
-  import colorSeparation from "./images/color-separation.svg";
-  import splash from "./images/irina-shishkina-FMlZAUFmkvw-unsplash.jpg";
-  import kip from "./images/kip.svg";
-  import looseRat from "./images/loose-rat.svg";
-  import remarkableLogo from "./images/remarkable-logo.svg";
-  import repub from "./images/repub.svg";
-  import scenicRoute from "./images/scenic-route.svg";
 
   function markScrolled(): void {
     document.documentElement.dataset.scroll = (scrollY > 0).toString();

@@ -1,7 +1,7 @@
 # cache
 node_modules
-.ssr
-dist
+.svelte-kit
+build
 
 # editor / os cruft
 *.un~
