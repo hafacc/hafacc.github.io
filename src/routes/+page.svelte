@@ -13,11 +13,13 @@
   import remarkableLogo from "#lib/images/remarkable-logo.svg";
   import repub from "#lib/images/repub.svg";
   import scenicRoute from "#lib/images/scenic-route.svg";
+  import sportGenealogy from "#lib/images/sport-genealogy.svg";
   import FaChrome from "~icons/fa6-brands/chrome";
   import FaGithub from "~icons/fa6-brands/github";
   import FaNpm from "~icons/fa6-brands/npm";
   import FaBox from "~icons/fa6-solid/box";
   import FaEnvelopeOpenText from "~icons/fa6-solid/envelope-open-text";
+  import FaFilePdf from "~icons/fa6-solid/file-pdf";
   import FaGlobe from "~icons/fa6-solid/globe";
   import SiPolars from "~icons/simple-icons/polars";
   import SiPypi from "~icons/simple-icons/pypi";
@@ -100,6 +102,26 @@
           <img src={scenicRoute} alt="" height="72" width="72">
         </Project>
         <Project
+          tint="from-white to-amber-50 dark:from-zinc-800 dark:to-amber-950/30"
+          name="Sport Genealogy"
+          description="A family tree of sports, as both a website and a poster."
+          buttons={[
+            { text: "Website", href: "https://sport.hafa.cc/", icon: FaGlobe },
+            {
+              text: "Poster",
+              href: "https://github.com/hafacc/sport-genealogy/releases/latest/download/sport-genealogy-poster.pdf",
+              icon: FaFilePdf,
+            },
+            {
+              text: "Github",
+              href: "https://github.com/hafacc/sport-genealogy",
+              icon: FaGithub,
+            },
+          ]}
+        >
+          <img src={sportGenealogy} alt="" height="72" width="72">
+        </Project>
+        <Project
           tint="from-white to-teal-50 dark:from-zinc-800 dark:to-teal-950/30"
           name="kip"
           description="Friends-only space sharing. List a spare room or your whole place, mark the dates it's free, and let friends book it. No money changes hands."
@@ -121,7 +143,7 @@
           buttons={[
             {
               text: "Chrome",
-              href: "https://chrome.google.com/webstore/detail/repub/blkjpagbjaekkpojgcgdapmikoaolpbl",
+              href: "https://chromewebstore.google.com/detail/repub/blkjpagbjaekkpojgcgdapmikoaolpbl",
               icon: FaChrome,
             },
             {
@@ -140,7 +162,7 @@
           buttons={[
             {
               text: "Website",
-              href: "https://hafa.cc/color-separation/",
+              href: "https://riso.hafa.cc/",
               icon: FaGlobe,
             },
             {
@@ -179,7 +201,7 @@
             { text: "Website", href: "https://ascii.hafa.cc/", icon: FaGlobe },
             {
               text: "Chrome",
-              href: "https://chrome.google.com/webstore/detail/ascii-math-unicode/llehdcbaonklonjlfgeggamnebgggoab",
+              href: "https://chromewebstore.google.com/detail/ascii-math-unicode/llehdcbaonklonjlfgeggamnebgggoab",
               icon: FaChrome,
             },
             {
@@ -198,7 +220,7 @@
           buttons={[
             {
               text: "Website",
-              href: "https://hafa.cc/synesthizer/",
+              href: "https://synesthizer.hafa.cc/",
               icon: FaGlobe,
             },
             {
